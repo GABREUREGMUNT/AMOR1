@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Te Amo ❤️</title>
+
+  <!-- 100% MOBILE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #7f1d1d, #dc2626);
+      color: #fff;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 24px 18px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      margin: 10px 0 6px;
+      letter-spacing: 2px;
+    }
+
+    .hint {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 18px;
+    }
+
+    /* VIDEO RESPONSIVO */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+      margin-bottom: 22px;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .mensagem {
+      width: 100%;
+      background: rgba(255,255,255,0.12);
+      padding: 18px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    label {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 130px;
+      border-radius: 16px;
+      border: none;
+      padding: 14px 16px;
+      font-size: 1rem;
+      margin-bottom: 14px;
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border-radius: 999px;
+      border: none;
+      background: #fecaca;
+      color: #7f1d1d;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>TE AMO</h1>
+    <div class="hint">⬇️ expanda o vídeo ⬇️</div>
+
+    <!-- VIDEO DO YOUTUBE -->
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/P1Mq4XSFiUg"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <!-- SUA MENSAGEM -->
+    <div class="mensagem">
+      <p>
+        Eu fiz isso com calma e com carinho.<br><br>
+        Não é pra te pressionar, nem te confundir.
+        É só pra você sentir o que ainda existe aqui.
+      </p>
+    </div>
+
+    <!-- RESPOSTA DELA -->
+    <label for="resposta">Deixe sua resposta ❤️</label>
+    <textarea id="resposta" placeholder="Escreve o que você sentir..."></textarea>
+    <button onclick="enviar()">Enviar</button>
+
+  </div>
+
+  <script>
+    function enviar() {
+      const texto = document.getElementById("resposta").value;
+
+      if (!texto) {
+        alert("Escreve algo antes de enviar ❤️");
+        return;
+      }
+
+      fetch("https://formspree.io/f/xojjjlob", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resposta: texto })
+      });
+
+      alert("Mensagem enviada com carinho ❤️");
+      document.getElementById("resposta").value = "";
+    }
+  </script>
+
+</body>
+</html>
